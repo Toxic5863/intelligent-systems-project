@@ -15,7 +15,7 @@ for i in range(training_xor_list.shape[0]):
 
 
 # ----------------------running GANetworks for the data------------
-GANetworks.startGenetics(training_input_list, training_xor_list, initial_population=10, generations=10)
+GANetworks.startGenetics(training_input_list, training_xor_list)
 
 
 # --------------------testing the network pickled by GANetworks-----------------------------
