@@ -11,6 +11,7 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import warnings
+import pickle
 
 
 warnings.filterwarnings("ignore")
@@ -84,6 +85,7 @@ def startGenetics(X, Y, initial_population=100, generations=200):
                                
     genetics.create_individual = create_individual  # data. The genetic algorithm will not modify the training data in
     genetics.fitness_function = fitness             # any way.
+    print("--PARAMETERS FOR EVOLUTION INITIALIZED | STARTING EVOLUTION--")
     genetics.run()
     solution = []
     phenotype = [evaluate_genome(genetics.best_individual()[1][0:4]),
@@ -96,5 +98,13 @@ def startGenetics(X, Y, initial_population=100, generations=200):
         if not(phenotype[i]):
             break
         solution.append(phenotype[i])           # adjusts the phenotype to a valid shape for an MLPClassifier object
+    ann_file = open("evolved_network", "wb+")
+    print("--EVOLUTION COMPLETE | FITTING NETWORK OF OPTIMAL COMPLEXITY TO DATASET--")
+    evolved_network = MLPClassifier(hidden_layer_sizes=(tuple(solution)), activation='tanh', solver='lbfgs', max_iter=1000)
+    evolved_network.fit(X, Y)
+    print("--CONVERGENCE OF OPTIMAL NETWORK COMPLETE | PICKLING NETWORK TO \"evolved_network\"--")
+    pickle.dump(evolved_network, ann_file)
+    print("--MODEL PRESERVATION COMPLETE | CLOSING ANN FILE--")
+    ann_file.close()
     return tuple(solution)
 
