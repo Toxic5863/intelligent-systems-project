@@ -10,6 +10,10 @@ from pyeasyga import pyeasyga                                 # the genetic algo
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import warnings
+
+
+warnings.filterwarnings("ignore")
 
 
 def create_individual(data):                               # Each genome is a half byte representing the size of a hidden layer,
