@@ -1,4 +1,5 @@
 from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import classification_report
 import numpy as np
 import pickle
 import GANetworks
@@ -24,4 +25,6 @@ try:
 except:
     print("Error opening MLPClassifier object from file")
 network = pickle.load(ann)
-print(network.predict([[0, 0]]))
+print(network.predict([[0,0]]))
+predict_test = network.predict(training_input_list)
+print(classification_report(training_xor_list, predict_test))
