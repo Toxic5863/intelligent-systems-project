@@ -2,7 +2,7 @@
 # coding: utf-8
 #Author: Alexander Hewitt
 #Purpose: Module that creates a low-cost neural network model for passed training data. Use startGenetics from the importing code to utilize.
-#Date completed: April 2, 2020
+#Date completed: May 2, 2020
 
 import random
 import sklearn                                                # for neural networks and performance metrics
