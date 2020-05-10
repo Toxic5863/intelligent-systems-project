@@ -1,3 +1,8 @@
+#Authors: Alexander Hewitt, Maranda Daughtery, Patrick Dooley
+#Purpose: To test the GANetworks module and pickle the resulting neural network
+#Date completed: April 30, 2020
+
+
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import classification_report
 import numpy as np
