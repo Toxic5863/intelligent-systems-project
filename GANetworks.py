@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import random
 import sklearn                                                # for neural networks and performance metrics
 import numpy as np                                            # for math and data operations
 import string                                                 # for converting the genomes to meaningful information
@@ -15,10 +16,10 @@ warnings.filterwarnings("ignore")
 
 
 def create_individual(data):                               # Each genome is a half byte representing the size of a hidden layer,
-    individual = [np.random.randint(0, 1) for _ in range(20)]   # with each neural network having a maximum of 5 hidden layers
+    individual = [random.randint(0, 1) for _ in range(20)]   # with each neural network having a maximum of 5 hidden layers
     for i in range(len(individual)):
         if not((i+1) % 4):
-            individual[i] = int(np.random.randint(0, int(i/4)) != 0) if not(individual[i]) else individual[i]
+            individual[i] = int(random.randint(0, int(i/4)) != 0) if not(individual[i]) else individual[i]
     return individual
 # create_individual function overwrites the default to minimize the odds that bits starting genomes of hidden layers will be 0,
 # thereby reducing the odds of missing hidden layers in chromosomes of the initial population with minimal increase of bias to
