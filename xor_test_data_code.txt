@@ -1,0 +1,11 @@
+training_input_list = np.zeros((1000, 2))                           # creating a column vector for inputs. Determines training size of the rest of the data
+for i in range(training_input_list.shape[0]):                        # populating the input column vector via a for loop
+    training_input_list[i][0] = random.randint(0, 1)
+    training_input_list[i][1] = random.randint(0, 1)
+training_xor_list = np.zeros((training_input_list.shape[0],1))       # creating a column vector of sins for outputs
+for i in range(training_xor_list.shape[0]):                          # calculating the appropriate outputs for the input column vector
+    training_xor_list[i][0] = training_input_list[i][0] != training_input_list[i][1]      # as per the XOR logical operator
+
+    
+    #print(training_input_list[:10])           # this is just debug code to verify the shapes of the column vectors
+    #print(training_xor_list[:10])
